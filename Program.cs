@@ -6,18 +6,42 @@ namespace jeu_de_maths
 {
     class Program
     {
-
+        enum e_Operateur
+        {
+            ADDITION = 1,
+            MULTIPLICATION = 2,
+            SOUSTRACTION = 3,
+        }
         static bool PoserQuestion(int min, int max)
         {
             int reponseInt = 0;
             Random generateurNb = new Random();
             
             
-                int nb1 = generateurNb.Next(min, max + 1);
-                int nb2 = generateurNb.Next(min, max + 1);
+            int nb1 = generateurNb.Next(min, max + 1);
+            int nb2 = generateurNb.Next(min, max + 1);
+            e_Operateur operateur = (e_Operateur)generateurNb.Next(1, 4);
+            string question;
+            int resultatAttendu;
+            if(operateur == e_Operateur.ADDITION)
+            {
+                question =$"{nb1} + {nb2} = ";
+                resultatAttendu = nb1 + nb2 ;
+            }
+            else if (operateur == e_Operateur.SOUSTRACTION)
+            {
+                question =$"{nb1} - {nb2} = ";
+                resultatAttendu = nb1 - nb2 ;
+            }
+            else
+            {
+               question =$"{nb1} * {nb2} = ";
+                resultatAttendu = nb1 * nb2 ;
+            }
+
             while(true)
             {
-                Console.Write($"{nb1} + {nb2} = ");
+                Console.Write(question);
             string reponse = Console.ReadLine();
                 try
                 {
@@ -29,7 +53,7 @@ namespace jeu_de_maths
                     Console.WriteLine("Erreur: Vous devez rentrer un nombre");
                 }
             }
-            if (reponseInt == nb1 + nb2)
+            if (reponseInt == resultatAttendu )
             {
                 return true;
             }
