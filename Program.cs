@@ -33,10 +33,15 @@ namespace jeu_de_maths
                 question =$"{nb1} - {nb2} = ";
                 resultatAttendu = nb1 - nb2 ;
             }
-            else
+            else if (operateur == e_Operateur.MULTIPLICATION)
             {
                question =$"{nb1} * {nb2} = ";
                 resultatAttendu = nb1 * nb2 ;
+            }
+            else
+            {
+                Console.WriteLine("Opérateur inconnu");
+                return false;
             }
 
             while(true)
@@ -69,7 +74,7 @@ namespace jeu_de_maths
 
             const int NOMBRE_MIN = 1;
             const int NOMBRE_MAX = 10;
-            const int NB_QUESTIONS = 10;
+            const int NB_QUESTIONS = 5;
             int score=0;
             for (int i = 0; i < NB_QUESTIONS; i++)
             {
