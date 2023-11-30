@@ -23,7 +23,7 @@ namespace jeu_de_maths
             e_Operateur operateur = (e_Operateur)generateurNb.Next(1, 4);
             string question;
             int resultatAttendu;
-            if(operateur == e_Operateur.ADDITION)
+           /* if(operateur == e_Operateur.ADDITION)
             {
                 question =$"{nb1} + {nb2} = ";
                 resultatAttendu = nb1 + nb2 ;
@@ -42,8 +42,26 @@ namespace jeu_de_maths
             {
                 Console.WriteLine("Opérateur inconnu");
                 return false;
-            }
+            }*/
 
+            switch (operateur)
+            {
+                case e_Operateur.ADDITION:
+                    question = $"{nb1} + {nb2} = ";
+                    resultatAttendu = nb1 + nb2;
+                    break;
+                case e_Operateur.SOUSTRACTION:
+                    question = $"{nb1} - {nb2} = ";
+                    resultatAttendu = nb1 - nb2;
+                    break;
+                case e_Operateur.MULTIPLICATION:
+                    question = $"{nb1} * {nb2} = ";
+                    resultatAttendu = nb1 * nb2;
+                    break;
+                default:
+                    Console.WriteLine("Opérateur inconnu");
+                    return false;
+            }
             while(true)
             {
                 Console.Write(question);
